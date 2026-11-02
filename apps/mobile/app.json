@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "Zuno",
+    "slug": "zuno",
+    "scheme": "zuno",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": { "supportsTablet": true, "bundleIdentifier": "org.zuno.app" },
+    "android": { "package": "org.zuno.app" },
+    "web": { "bundler": "metro", "name": "Zuno — a little more informed" },
+    "plugins": ["expo-secure-store", "@clerk/expo"]
+  }
+}

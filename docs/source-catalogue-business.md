@@ -1,0 +1,50 @@
+# Business and marketing source catalogue
+
+Checked on **31 October 2026** using ordinary HTTPS requests with redirects disabled, a Zuno user-agent and XML parsing. All 20 enabled endpoints returned HTTP 200 and nonempty RSS/Atom items at the canonical URLs below. Feed sizes were below the existing 1 MB fetch cap. The actual Zuno `parseRss` and `contentText` functions were also run against all 20 live feeds: every feed produced ten entries with string titles, HTTPS links and parseable publication dates. Results are point-in-time availability checks, not a promise of future uptime or a redistribution licence.
+
+Business coverage includes company news, startups, retail, advertising, communications and marketing practice. “Trusted” means an identifiable established publisher, institution or accountable first-party author; opinion, vendor claims and sponsored material must remain attributed.
+
+| Source | Canonical public feed | Items / bytes checked | Evidence and scope |
+| --- | --- | --- | --- |
+| Federal Reserve | [https://www.federalreserve.gov/feeds/press_all.xml](https://www.federalreserve.gov/feeds/press_all.xml) | 20 / 14,507 | Official monetary-policy, supervision and banking releases; source statements, not investment advice. Public article host allowlist: `www.federalreserve.gov`. First three raw content lengths: 82, 37, 120 characters. |
+| BBC Business | [https://feeds.bbci.co.uk/news/business/rss.xml](https://feeds.bbci.co.uk/news/business/rss.xml) | 50 / 36,790 | Public-service business reporting; feed summaries only. Feed-supplied text only. First three raw content lengths: 105, 111, 101 characters. |
+| NPR Business | [https://feeds.npr.org/1006/rss.xml](https://feeds.npr.org/1006/rss.xml) | 10 / 14,569 | Public-radio reporting; supplied summaries vary in depth. Feed-supplied text only. First three raw content lengths: 719, 626, 296 characters. |
+| CNBC Business | [https://www.cnbc.com/id/10001147/device/rss/rss.html](https://www.cnbc.com/id/10001147/device/rss/rss.html) | 30 / 20,067 | Business newsroom; supplied descriptions only, including attributed analyst views. Feed-supplied text only. First three raw content lengths: 147, 150, 129 characters. |
+| Bloomberg Business | [https://www.bloomberg.com/feeds/business/news.rss](https://www.bloomberg.com/feeds/business/news.rss) | 20 / 12,689 | Professional business newsroom; very thin public feed, no paywall access. Feed-supplied text only. First three raw content lengths: 23, 23, 23 characters. |
+| Fortune | [https://fortune.com/feed/fortune-feeds/?id=3230629](https://fortune.com/feed/fortune-feeds/?id=3230629) | 10 / 116,868 | Business newsroom; substantial text supplied in this public feed; no gated article fetch. Feed-supplied text only. First three raw content lengths: 13417, 8935, 13307 characters. |
+| Fast Company | [https://www.fastcompany.com/latest/rss](https://www.fastcompany.com/latest/rss) | 20 / 213,024 | Business, design and creative-work reporting; substantial feed text, no gated article fetch. Feed-supplied text only. First three raw content lengths: 6799, 13246, 8190 characters. |
+| Entrepreneur | [https://www.entrepreneur.com/rss-feed/latest](https://www.entrepreneur.com/rss-feed/latest) | 10 / 17,289 | Entrepreneurship newsroom and contributors; distinguish advice/opinion and reported facts. Public article host allowlist: `www.entrepreneur.com`. First three raw content lengths: 108, 220, 176 characters. |
+| Marketing Dive | [https://www.marketingdive.com/feeds/news/](https://www.marketingdive.com/feeds/news/) | 10 / 9,347 | Marketing/brand newsroom; public feed and ordinary public articles. Public article host allowlist: `www.marketingdive.com`. First three raw content lengths: 386, 368, 363 characters. |
+| Retail Dive | [https://www.retaildive.com/feeds/news/](https://www.retaildive.com/feeds/news/) | 10 / 8,643 | Retail and consumer-business newsroom; public feed and ordinary public articles. Public article host allowlist: `www.retaildive.com`. First three raw content lengths: 405, 368, 163 characters. |
+| Marketing Week | [https://www.marketingweek.com/feed/](https://www.marketingweek.com/feed/) | 40 / 31,958 | Marketing-industry newsroom; supplied descriptions only, no subscriber article fetch. Feed-supplied text only. First three raw content lengths: 236, 256, 258 characters. |
+| Search Engine Journal | [https://www.searchenginejournal.com/feed/](https://www.searchenginejournal.com/feed/) | 20 / 23,249 | Search/advertising newsroom and expert contributors; distinguish opinion and claims. Public article host allowlist: `www.searchenginejournal.com`. First three raw content lengths: 456, 422, 423 characters. |
+| Social Media Today | [https://www.socialmediatoday.com/feeds/news/](https://www.socialmediatoday.com/feeds/news/) | 10 / 6,425 | Social-platform and brand-marketing newsroom; supplied feed summaries. Feed-supplied text only. First three raw content lengths: 167, 152, 150 characters. |
+| Buffer Resources | [https://buffer.com/resources/rss/](https://buffer.com/resources/rss/) | 15 / 622,528 | First-party social/content-marketing research and practice; substantial feed text, vendor claims attributed. Feed-supplied text only. First three raw content lengths: 73820, 35858, 44386 characters. |
+| Stripe Blog | [https://stripe.com/blog/feed.rss](https://stripe.com/blog/feed.rss) | 10 / 9,558 | First-party payments/product-business evidence; company claims remain attributed. Public article host allowlist: `stripe.com`. First three raw content lengths: 230, 241, 219 characters. |
+| Y Combinator Blog | [https://www.ycombinator.com/blog/rss/](https://www.ycombinator.com/blog/rss/) | 15 / 91,494 | First-party startup news and founder essays; substantial feed text, VC opinions attributed. Feed-supplied text only. First three raw content lengths: 6411, 4892, 5524 characters. |
+| PR Daily | [https://www.prdaily.com/feed/](https://www.prdaily.com/feed/) | 25 / 224,436 | Communications and brand-industry newsroom; substantial supplied feed text. Feed-supplied text only. First three raw content lengths: 6955, 1493, 8846 characters. |
+| MarTech | [https://martech.org/feed/](https://martech.org/feed/) | 10 / 184,075 | Marketing-technology newsroom and practitioner analysis; substantial feed text. Feed-supplied text only. First three raw content lengths: 17226, 7516, 15383 characters. |
+| Chiefmartec | [https://chiefmartec.com/feed/](https://chiefmartec.com/feed/) | 10 / 199,193 | Named marketing-technology analyst; substantial essays; analysis is not neutral fact. Feed-supplied text only. First three raw content lengths: 13810, 55774, 23487 characters. |
+| Small Business Trends | [https://smallbiztrends.com/feed/](https://smallbiztrends.com/feed/) | 10 / 188,558 | Small-business reporting and practitioner articles; distinguish advice and sponsored claims. Public article host allowlist: `smallbiztrends.com`. First three raw content lengths: 5158, 41171, 4800 characters. |
+
+## Public article checks
+
+The first linked article from Marketing Dive, Retail Dive, Entrepreneur, Search Engine Journal, Stripe and Small Business Trends returned HTTP 200 without redirects, contained an article element, stayed below 1 MB, and did not advertise `isAccessibleForFree: false`. Their explicit hosts above permit ordinary public article enrichment. This is not an access bypass or a guarantee that every future article is free: unavailable, subscriber-only or consent-only pages must retain only the supplied feed evidence. The Federal Reserve host preserves the existing government-release connector.
+
+The remaining publishers are feed-only in this catalogue. Several public feeds themselves supply substantial text (Fortune, Fast Company, Buffer, YC, PR Daily, MarTech and Chiefmartec). A public feed is evidence only for text actually present; Zuno must not infer unseen article details. Rich-brief depth and claim review still determine whether an item can be published.
+
+## Bloomberg and access boundaries
+
+- Bloomberg’s old `feeds.bloomberg.com/business/news.rss` returns 301. The listed `www.bloomberg.com` URL is its public canonical feed and returned 20 items. The first three content fields were only 23 characters each: this discovery connector will often be held for insufficient evidence. There is deliberately no Bloomberg article-host enrichment, login, cookie use, alternate mirror or paywall bypass.
+- Bloomberg Markets was separately checked at `https://www.bloomberg.com/feeds/markets/news.rss`: HTTP 200, 20 items, 16,941 bytes; it belongs in the markets catalogue rather than being counted twice as business coverage.
+- Public RSS access does not license copying full articles or images. Retain source links and attribution, publish bounded original summaries supported by supplied text, and review publisher terms before commercial redistribution.
+
+## Candidates deliberately excluded
+
+- Guardian Business canonical feed is accessible, but its [official RSS help](https://help.theguardian.com/article/how-do-i-use-the-guardian-s-rss-feeds) restricts feeds to personal, non-commercial use. It is not enabled pending distribution-scope review.
+- HubSpot Marketing returned a 1,357,432-byte feed, above the current 1 MB cap. Adding `?limit=10` or `?rss=true` did not shrink it; it is not falsely listed as working within that cap.
+- Search Engine Land and Campaign returned HTTP 403; no bypass was attempted. Content Marketing Institute’s old `/feed/` and `/feed` redirect to a non-feed news page. HBR `/feed`, a16z `/feed/`, Marketing Brew `/feed`, and SBA `/blogs/rss.xml` returned 404. Shopify `/blog.atom` redirects to HTML, not a feed.
+
+## Primary publisher evidence
+
+The feed URLs above are publisher-controlled primary endpoints and were inspected directly. RSS discovery was cross-checked with [CNBC’s RSS page](https://www.cnbc.com/rss-feeds/), [Federal Reserve feeds](https://www.federalreserve.gov/feeds/feeds.htm), the Guardian’s official policy above, and the actual public Bloomberg feed. No Google News wrappers or generated third-party full-text feeds are used.

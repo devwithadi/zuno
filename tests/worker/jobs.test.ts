@@ -1,0 +1,40 @@
+import { expect, it, vi } from 'vitest';
+import type { Db } from 'mongodb';
+import { createJobs } from '../../services/worker/jobs.js';
+import { runScheduled } from '../../services/worker/scheduler.js';
+
+it('claims durable lease atomically, backs off failures and checks ownership', async () => {
+  const findOneAndUpdate = vi.fn(async (_filter, update) => ({ token: update.$set.token }));
+  const startedAt = new Date(Date.now() - 400_000);
+  const findOne = vi.fn().mockResolvedValue({ attempts: 2, startedAt });
+  const updateOne = vi.fn();
+  const jobs = await createJobs({ collection: () => ({ findOneAndUpdate, findOne, updateOne }) } as unknown as Db);
+  const token = await jobs.claim('dev');
+  expect(token).toBeTruthy();
+  expect(findOneAndUpdate.mock.calls[0][0]).toHaveProperty('leaseUntil');
+  expect(findOneAndUpdate.mock.calls[0][1].$set.startedAt).toBeInstanceOf(Date);
+  await jobs.finish('dev', token!, 'offline');
+  expect(updateOne.mock.calls[0][1].$set.attempts).toBe(3);
+  await jobs.finish('dev', token!);
+  expect(updateOne.mock.calls[1][1].$set.attempts).toBe(0);
+  expect(updateOne.mock.calls[1][1].$set.nextRun).toEqual(new Date(+startedAt + 300_000));
+  expect(+updateOne.mock.calls[0][1].$set.nextRun).toBeGreaterThan(Date.now());
+  findOne.mockResolvedValueOnce({ attempts: 0 });
+  await jobs.finish('dev', token!);
+  expect(+updateOne.mock.calls[2][1].$set.nextRun).toBeGreaterThan(Date.now());
+  findOne.mockResolvedValue(null);
+  await jobs.finish('dev', 'wrong-owner');
+  expect(updateOne).toHaveBeenCalledTimes(3);
+  findOneAndUpdate.mockRejectedValueOnce({ code: 11000 } as never);
+  expect(await jobs.claim('dev')).toBeNull();
+  findOneAndUpdate.mockRejectedValueOnce(Error('database down') as never);
+  await expect(jobs.claim('dev')).rejects.toThrow('database down');
+});
+it('does not overlap cycles and stops promptly on shutdown', async () => {
+  const controller = new AbortController();
+  const run = vi.fn(async () => { controller.abort(); });
+  await runScheduled(run, { signal: controller.signal, interval: 1 });
+  expect(run).toHaveBeenCalledTimes(1);
+  await runScheduled(run, { signal: controller.signal });
+  expect(run).toHaveBeenCalledTimes(1);
+});

@@ -1,0 +1,31 @@
+{
+  "name": "@zuno/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "web": "expo start --web --port 8081",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "build:web": "expo export --platform web --clear"
+  },
+  "dependencies": {
+    "@clerk/expo": "4.14.1",
+    "@clerk/react": "latest",
+    "@zuno/shared": "*",
+    "expo": "~55.0.32",
+    "expo-auth-session": "~55.0.19",
+    "expo-crypto": "~55.0.19",
+    "expo-secure-store": "~55.0.18",
+    "expo-web-browser": "~55.0.20",
+    "motion": "latest",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.83.10",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-web": "~0.21.0",
+    "zod": "latest"
+  },
+  "devDependencies": { "@types/react": "~19.2.0" }
+}
